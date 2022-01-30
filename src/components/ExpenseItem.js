@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import { GlobalContext } from "../context/GlobalState";
 
 const ExpenseItem = ({ transaction }) => {
+  const { deleteTransaction } = useContext(GlobalContext);
+  const sign = transaction.amount < 0 ? "-" : "+";
+
   return (
-    <li>
+    <li key={transaction.id}>
       <p>
-        {transaction.name}
+        {transaction.expense}
         <span>
+          {sign}
           {transaction.amount}kn
         </span>
       </p>
-      <button>Obriši</button>
+      <button onClick={() => deleteTransaction(transaction.id)}>Obriši</button>
     </li>
   );
 };

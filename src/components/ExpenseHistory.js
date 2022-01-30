@@ -1,26 +1,11 @@
-import React  from "react";
+import React, { useContext } from "react";
 
 import ExpenseItem from "./ExpenseItem";
-
-const transactions= [
-      {
-        id: 1,
-        name: "Hrana",
-        amount: -200
-      },
-      {
-        id: 2,
-        name: "Plaća",
-        amount: 5000
-      },
-      {
-        id: 3,
-        name: "Internet",
-        amount: -300
-      }
-    ]
+import { GlobalContext } from "../context/GlobalState";
 
 const ExpenseHistory = () => {
+  const { transactions } = useContext(GlobalContext);
+
   return (
     <React.Fragment>
       <h4>Dosadašnji troškovi</h4>
